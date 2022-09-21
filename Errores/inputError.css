@@ -1,0 +1,79 @@
+/*Este es el primer input que se desarrollo aqui hubo problemas visualizando la opcion de focus en el input*/
+/* <div className="PruebaSearch" >
+    <input placeholder="Prueba" id="input" onFocus={() => {
+        prueba()
+    }} ></input>
+        <button type="button" >🔍</button>
+    </div> */
+
+.PruebaSearch {
+    width: calc(100% - 30px);
+    height: 30px;
+    border-radius: 50px;
+    position: relative;
+
+    background-color: #F9FBFC;
+    border: 1px solid #dfe1e5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+
+
+}
+
+.PruebaSearch button {
+    width: 30px;
+    position: absolute;
+    right: 0px;
+    border-radius: 50px;
+
+    background-color: #F9FBFC;
+    border: none;
+    outline: none;
+    overflow: hidden;
+}
+
+#input {
+    width: calc(100% - 60px);
+    position: absolute;
+    background-color: #F9FBFC;
+    border: none;
+    outline: none;
+}
+
+#input::focus {
+    border-color: brown;
+}
+
+/*Acá solo usamos el input sin nada pero no se ve aceptable, este es el css Original.*/
+/* <input placeholder="Cebolla" className="TodoSearch" />
+         <button type="button">🔍</button> */
+
+.TodoSearch {
+    background: #F9FBFC;
+    border-radius: 50px;
+    border: 2px solid #202329;
+    margin: 0 24px;
+    height: 64px;
+    width: calc(100% - 62px);
+    font-size: 24px;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    color: #1E1E1F;
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.TodoSearch::placeholder {
+    color: #A5A5A5;
+    font-family: 'Montserrat';
+    font-weight: 400;
+}
+
+.TodoSearch:focus {
+    outline-color: #61DAFA;
+}

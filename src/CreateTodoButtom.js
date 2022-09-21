@@ -1,9 +1,12 @@
 import React from "react";
+import './CreateTodoButtom.css';
 
-function CreateTodoButtom(props){
+function CreateTodoButtom(props) {
     return (
-        <button>+</button>
+        <button className="CreateTodoButton">
+            +
+        </button>
     );
 }
 
-export {CreateTodoButtom};
+export { CreateTodoButtom };
