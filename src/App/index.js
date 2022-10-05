@@ -8,47 +8,74 @@ import { AppUI } from './AppUI';
 //   { text: 'LALALALAA', completed: false },
 // ];
 
-function useLocalStorage(itemName, initialValue){
+function useLocalStorage(itemName, initialValue) {
 
-  const localStorageItem = localStorage.getItem(itemName);
-  let parsedItem;
+  const [error, setError] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
+  const [item, setItem] = React.useState(initialValue);
 
-  
-  if (!localStorageItem) {
-    localStorage.setItem(itemName,JSON.stringify(initialValue));
-    parsedItem = initialValue;
-  }else{
-    parsedItem = JSON.parse(localStorageItem);
-  }
+  React.useEffect(() => {
+    setTimeout(() => {
+      try {
+        const localStorageItem = localStorage.getItem(itemName);
+        let parsedItem;
 
-  const [item, setItem] = React.useState(parsedItem);
 
-  const saveItem = (newItem) => {
-    const stringifiedItem = JSON.stringify(newItem);
-    localStorage.setItem(itemName,stringifiedItem);
-    setItem(newItem);
+        if (!localStorageItem) {
+          localStorage.setItem(itemName, JSON.stringify(initialValue));
+          parsedItem = initialValue;
+        } else {
+          parsedItem = JSON.parse(localStorageItem);
+        }
+
+        setItem(parsedItem);
+        setLoading(false);
+
+      } catch (error) {
+        setError(error);
+      }
+    }, 1000);
+  });
+
+  const saveItem = (newTodos) => {
+    try {
+      const stringifiedItem = JSON.stringify(newTodos);
+      localStorage.setItem(itemName, stringifiedItem);
+      setItem(newTodos);
+    } catch (error) {
+      setError(error);
+    }
   };
 
-  return [
-    item, 
-    saveItem
-  ];
+  return {
+    item,
+    saveItem,
+    loading,
+    error,
+  };
 }
 
 function App() {
-  const [Item, saveItem] = useLocalStorage('TODOS_V1',[]);
+  // const [Item, saveItem] = useLocalStorage('TODOS_V1', []);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage('TODOS_V1', []);
+
   const [searchValue, setSearchValue] = React.useState('');
 
-  const completedItem = Item.filter(todo => !!todo.completed).length;
-  const totalItem = Item.length;
+  const completedItem = todos.filter(todo => !!todo.completed).length;
+  const totalItem = todos.length;
 
   let searchedItem = [];
 
   if (!searchValue.length >= 1) {
-    searchedItem = Item;
+    searchedItem = todos;
   } else {
 
-    searchedItem = Item.filter(todo => {
+    searchedItem = todos.filter(todo => {
 
       const todoText = todo.text.toLowerCase();
       const searchText = searchValue.toLowerCase();
@@ -57,30 +84,33 @@ function App() {
     })
   }
 
-  
+
 
   const completeTodo = (text) => {
 
-    const todoIndex = Item.findIndex(todo => todo.text === text);
+    const todoIndex = todos.findIndex(todo => todo.text === text);
 
-    const newItem = [...Item];
-    newItem[todoIndex].completed = true;
-    saveItem(newItem);
+    const newTodos = [...todos];
+    newTodos[todoIndex].completed = true;
+    saveTodos(newTodos);
 
   };
 
   const deleteTodo = (text) => {
 
-    const todoIndex = Item.findIndex(todo => todo.text === text);
+    const todoIndex = todos.findIndex(todo => todo.text === text);
 
-    const newItem = [...Item];
-    newItem.splice(todoIndex, 1);
-    saveItem(newItem);
+    const newTodos = [...todos];
+    newTodos.splice(todoIndex, 1);
+    saveTodos(newTodos);
 
   };
 
+
   return (
     <AppUI
+      loading={loading}
+      error={error}
       totalItem={totalItem}
       completedItem={completedItem}
 
