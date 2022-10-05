@@ -1,0 +1,6 @@
+.TodoCounter {
+    font-size: 24px;
+    text-align: center;
+    background: rgb(48, 158, 213);
+    background: radial-gradient(circle, rgba(48, 158, 213, 0.9962359943977591) 27%, rgba(38, 33, 33, 1) 100%);
+}
