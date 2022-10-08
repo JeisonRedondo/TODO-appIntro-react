@@ -1,7 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  background:rgb(38, 33, 33);
+  /* background:rgb(23, 9, 53); */
+  background: rgb(48, 73, 213);
+  background: radial-gradient(circle, rgba(48, 73, 213, 0.9962359943977591) 5%, rgba(6, 8, 19, 1) 100%);
   color: #1E1E1F;
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
@@ -11,6 +13,7 @@ body {
   position: relative;
   min-height: 100vh;
 }
-p{
+
+p {
   color: aqua;
 }

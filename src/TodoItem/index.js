@@ -3,6 +3,14 @@ import './TodoItem.css';
 
 function TodoItem(props) {
 
+    const [isChecked, setIsChecked] = React.useState(props.completed);
+
+    const handleOnChange = () => {
+        setIsChecked(!isChecked);
+      };
+
+    // const completedValue = props.completed?'TodoItem-p--complete':'';
+
     return (
         <li className="TodoItem">
             {/* <span className={`Icon Icon-check ${props.completed && 'Icon-check--active'}`} >
@@ -18,16 +26,18 @@ function TodoItem(props) {
                 type="checkbox"
                 id="TodoInput--item"
                 name="TodoInput--item"
-                defaultChecked={props.completed}
-                onClick={props.onComplete}
-                ></input>
+                checked={isChecked}
+                onChange={handleOnChange}
+            ></input>
 
             <label
+                // props.completed && 'TodoItem-p--complete'
                 htmlFor="TodoInput--item"
-                className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>{props.text}</label>
-            <span 
-            className="Icon Icon-delete"
-            onClick={props.onDelete}
+                className={`TodoItem-p ${isChecked ? 'TodoItem-p--complete' : ''}`}
+            >{props.text}</label>
+            <span
+                className="Icon Icon-delete"
+                onClick={props.onDelete}
             >
                 X
             </span>

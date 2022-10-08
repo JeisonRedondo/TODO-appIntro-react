@@ -2,8 +2,7 @@
   margin-top: 24px;
   position: relative;
 
-  background: rgb(48, 158, 213);
-  background: linear-gradient(195deg, rgba(48, 158, 213, 1) 29%, rgba(131, 224, 145, 1) 69%);
+  background:#3BBCFD;
   box-shadow: 0px 5px 50px rgba(13, 87, 235, 0.15);
   border-radius: 15px 30px 15px;
 
@@ -13,24 +12,24 @@
   flex-wrap: nowrap;
 }
 
-.TodoItem:hover{
-  box-shadow: 5px 5px 10px rgba(48, 158, 213, 1);
+.TodoItem:hover {
+  box-shadow: 5px 7px 7px rgb(134, 231, 177);
 }
 
 .TodoItem-p {
   margin: 20px;
   width: calc(100% - 120px);
 
-  color: rgb(10, 7, 7);
-  font-size: 18px;
+  color: #403E06;
+  font-size: 20px;
   line-height: 20px;
-  font-weight: 400;
+  font-weight: 600;
 
 }
 
 .TodoItem-p--complete {
   text-decoration: line-through;
-  color: rgb(117, 12, 215);
+  color: #73015A;
   font-weight: bold;
 }
 

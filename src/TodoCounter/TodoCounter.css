@@ -2,5 +2,6 @@
     font-size: 24px;
     text-align: center;
     background: rgb(48, 158, 213);
-    background: radial-gradient(circle, rgba(48, 158, 213, 0.9962359943977591) 27%, rgba(38, 33, 33, 1) 100%);
+    background: radial-gradient(circle, rgba(48, 158, 213, 1) 70%, rgba(15, 22, 61, 1) 100%);
+    border: none;
 }
