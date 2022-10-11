@@ -1,0 +1,27 @@
+
+.container--loading{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container--loading__img{
+    width: 200px;
+
+    background: transparent;
+    margin-bottom: 30px;
+}
+
+.container--loading__text{
+    width: calc(100%-30px);
+    height: auto;
+
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+    
